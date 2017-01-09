@@ -56,10 +56,12 @@
                 </li>
             </ul>
 
-
-
         <ul class="nav navbar-nav" id = "backindex">
-            <li id="systemManage_nav"><a href="javascript:{}" onclick="goTo('${ctx}/index')"><i class="glyphicon glyphicon-home" title="工作台"></i></a></li>
+            <li id="systemManage_nav">
+                <a href="javascript:{}" onclick="goTo('${ctx}/index')">
+                    <i class="glyphicon glyphicon-home" title="工作台"></i>
+                </a>
+            </li>
                         <%--<li class="dropdown">--%>
                                 <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
                                    <%--aria-expanded="false">系统管理 <span class="caret"></span></a>--%>
@@ -111,7 +113,7 @@
     </div>
 
     <!-- navbar end -->
-    <div id="clearFixTop" style="min-height: 420px">
+    <div id="clearFixTop" style="min-height: 580px">
         <sitemesh:body />
     </div>
     <footer class="footer" style="text-align: center;clear:both;">
@@ -125,7 +127,7 @@
     var menuParent = $("#menuParent");
     $(document).ready(function(){
         var menuArr = new Array();
-        $.getJSON("${ctx}/sys/menu/menutree",{},function(data){
+        $.getJSON("${ctx}/sys/menu/menuTree",{},function(data){
             for( var i = 0 ; i < data.length ; i++ ){
                 menuArr = menuArr.concat(listNodes(data[i]));
             }

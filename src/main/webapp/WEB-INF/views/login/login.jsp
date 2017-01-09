@@ -8,7 +8,6 @@
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Login Page</title>
-    <%@ include file="/WEB-INF/common/common-js-style.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="${ctx}/static/portal/login/styles.css">
 

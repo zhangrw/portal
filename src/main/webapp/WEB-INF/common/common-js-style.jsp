@@ -3,19 +3,16 @@
  <c:set var="ctx" value="${pageContext.request.contextPath}" /> 
 
 <link type="text/css" rel="stylesheet" href="${ctx}/static/jquery/css/jquery-ui-1.10.3.custom.css" />     
-<link type="text/css" rel="stylesheet" href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" /> 
+<link type="text/css" rel="stylesheet" href="${ctx}/static/bootstrap/3.3.0/css/bootstrap.css" />
 <link type="text/css" rel="stylesheet" href="${ctx}/static/bootstrap/switch/css/bootstrap-switch.css" />
 
 <link type="text/css" rel="stylesheet" href="${ctx }/static/uploadify/uploadify.css"/>
-<%--<link type="text/css" rel="stylesheet" href="${ctx }/static/qis/myplugin/my-plugin.css"/>--%>
 
-<%-- <link type="text/css" rel="stylesheet" href="${ctx}/static/bootstrap/3.0.3/css/bootstrap-theme.css" /> --%>
 
-<%--<script type="text/javascript" src="${ctx}/static/jquery/js/jquery-1.10.2.min.js"></script>--%>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script type="text/javascript" src="${ctx}/static/jquery/jquery-1.12.3.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<!-- Bootstrap 核心 JavaScript 文件 -->
+<script src="${ctx}/static/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="${ctx}/static/bootstrap/tab.js"></script>
 <script type="text/javascript" src="${ctx}/static/bootstrap/switch/js/bootstrap-switch.js"></script>
@@ -24,7 +21,6 @@
 <script type="text/javascript" src="${ctx}/static/jquery/js/jquery-ui-1.10.3.custom.min.js"></script>
 
 <script type="text/javascript" src="${ctx}/static/uploadify/jquery.uploadify.min.js"></script>
-<%--<script type="text/javascript" src="${ctx}/static/qis/myplugin/my-plugin.js"></script>--%>
 <script type="text/javascript">
  	 var topHeight = 0;
   </script>

@@ -37,7 +37,7 @@
     </context:component-scan>
 
     <!-- 如果当前请求为“/”时，则转发到“/index”(即定义无需Controller的url<->view直接映射) 与welcome-file-list冗余配置-->
-    <mvc:view-controller path="/" view-name="forward:/index"/> <!-- redirect:/index -->
+    <mvc:view-controller path="/" view-name="redirect:/index"/> <!-- forward:/index -->
     <!--设置静态资源映射-->
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
     <!-- 当上面要访问的静态资源不包括在上面的配置中时，则根据此配置来访问 -->

@@ -133,7 +133,7 @@ public class MenuController {
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "menutree", method = RequestMethod.GET)
+    @RequestMapping(value = "menuTree", method = RequestMethod.GET)
     @ResponseBody
     public List<MenuTreeNode> menuTree() {
 
