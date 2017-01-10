@@ -17,12 +17,12 @@
 	   http://www.springframework.org/schema/mvc
 	   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 	   ">
-    <context:component-scan base-package="com" />
+    <context:component-scan base-package="com.banshion.portal" >
     <!--<context:component-scan  base-package="com.banshion.portal.web.sys.service">-->
-        <!--<context:include-filter type ="annotation" expression= "org.springframework.stereotype.Service" />-->
-        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
-        <!--<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>-->
-    <!--</context:component-scan>-->
+        <context:include-filter type ="annotation" expression= "org.springframework.stereotype.Service" />
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
 
     <!-- 读取配置文件 -->
     <bean id="propertyConfigurer" class="com.banshion.portal.util.CommonPlaceholderConfigurer">
@@ -37,6 +37,14 @@
     <context:property-placeholder ignore-unresolvable="true" local-override="true"
             location="classpath*:/application.properties"
     />
+
+
+    <!--<aop:aspectj-autoproxy /> 不设置proxy-target-class属性则默认使用AnnotationAwareAspectJAutoProxyCreator创建代理织入切面-->
+    <!--<bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator" />-->
+
+    <!-- 使用cglib动态代理自动为spring容器中那些配置@aspectJ切面的bean创建代理，织入切面 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
     <!-- 数据库配置 -->
     <import resource="datasources/spring-datasources.xml" />
     <!-- shiro配置 -->

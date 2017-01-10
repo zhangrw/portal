@@ -64,18 +64,6 @@ public class Test
 //        //LOGGER.info(JSON.toJSON(userInfos));
 //    }
 //
-//    @org.junit.Test
-//    public void testInsert() {
-//        UserInfo userInfo = new UserInfo();
-//        userInfo.setUname("xiaoming");
-//        userInfo.setUnumber(4+"");
-//        userInfo.setId(Integer.parseInt(Math.random()*100+"")+"");
-//        int result = userService.insert(userInfo);
-//        System.out.println(result);
-//    }
-
-
-
 
 
 }
