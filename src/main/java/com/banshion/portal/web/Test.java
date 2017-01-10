@@ -58,12 +58,4 @@ public class Test
 
     }
 
-//    @org.junit.Test
-//    public void testQueryAll() {
-//        List<UserInfo> userInfos = userService.getUsers();
-//        //LOGGER.info(JSON.toJSON(userInfos));
-//    }
-//
-
-
 }
