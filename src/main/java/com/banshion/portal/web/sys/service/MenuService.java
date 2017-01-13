@@ -2,7 +2,6 @@ package com.banshion.portal.web.sys.service;
 
 import com.banshion.portal.web.sys.domain.SysMenu;
 import com.banshion.portal.web.sys.domain.SysPermission;
-import com.banshion.portal.web.sys.service.impl.MenuTreeNode;
 
 import java.util.List;
 
@@ -28,9 +27,9 @@ public interface MenuService {
 
     void updateMenuOrder(String menuOrderParam);
 
-    List<MenuTreeNode> getAllMenus();
+    List<SysMenu> getAllMenus();
 
-    List<MenuTreeNode> getMenuByUserId(String userId);
+    List<SysMenu> getMenuByUserId(String userId);
 
-
+    String menuFullName(String url);
 }

@@ -96,94 +96,71 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Cacheable(value = "menuCache")
-    public List<MenuTreeNode> getAllMenus() {
+    public List<SysMenu> getAllMenus() {
         try {
-//            return  menumapper.selectByExample(null);
             List<SysMenu> list = menumapper.selectByExample(null);
-
-            HashMap<String,MenuTreeNode> nodemap = new HashMap<String, MenuTreeNode>();
-
-            for( SysMenu menu : list ){
-
-                MenuTreeNode node = new MenuTreeNode();
-                node.setId(menu.getId());
-                node.setName(menu.getName());
-                node.setParentId(menu.getParentId());
-                node.setUrl(menu.getUrl());
-                node.setType(menu.getType());
-                nodemap.put(menu.getId() , node);
-
-            }
-
-            Set entrySet = nodemap.entrySet();
-
-            MenuTreeNode root = null;
-
-            for(Iterator it = entrySet.iterator(); it.hasNext();){
-                MenuTreeNode node = (MenuTreeNode)((Map.Entry)it.next()).getValue();
-
-                if( node.getParentId() == null || "".equals(node.getParentId())){
-                    root = node;
-                }else{
-                    if( nodemap.get(node.getParentId()) != null ){
-                        ((MenuTreeNode) nodemap.get(node.getParentId())).addChildNode(node);
-                    }
-                }
-            }
-
-            return root.getChildren();
-
+            return list;
         } catch (Exception e) {
             throw new ServiceException("查询菜单失败", e);
         }
     }
 
     @Cacheable(value = "menuCache" ,key = "#userId")
-    public List<MenuTreeNode> getMenuByUserId(String userId) {
+    public List<SysMenu> getMenuByUserId(String userId) {
     try{
         List<SysMenu> list = menumapper.getMenuByUserId(userId);
-        String[] idArr = new String[list.size()];
-
-        for( int i = 0 ; i < list.size() ; i++ ){
-            idArr[i] = list.get(i).getId();
-        }
-
-        list = menumapper.getMenuTreeById(idArr);
-
-        HashMap<String,MenuTreeNode> nodemap = new HashMap<String, MenuTreeNode>();
-
-        for( SysMenu menu : list ){
-            MenuTreeNode node = new MenuTreeNode();
-            node.setId(menu.getId());
-            node.setName(menu.getName());
-            node.setParentId(menu.getParentId());
-            node.setUrl(menu.getUrl());
-            node.setType(menu.getType());
-            nodemap.put(menu.getId() , node);
-        }
-
-        Set entrySet = nodemap.entrySet();
-
-        MenuTreeNode root = null;
-
-        for(Iterator it = entrySet.iterator(); it.hasNext();){
-            MenuTreeNode node = (MenuTreeNode)((Map.Entry)it.next()).getValue();
-
-            if( node.getParentId() == null || "".equals(node.getParentId())){
-                root = node;
-            }else{
-                if( nodemap.get(node.getParentId()) != null ){
-                    ((MenuTreeNode) nodemap.get(node.getParentId())).addChildNode(node);
-                }
-            }
-        }
-
-        return root.getChildren();
-
+        return list;
     } catch (Exception e) {
         throw new ServiceException("查询菜单失败", e);
     }
     }
 
+    /**
+     *
+     * 通过访问地址拼接菜单全路径的名字
+     * @param url 访问路径
+     * @return
+     */
+    @Override
+    public String menuFullName(String url) {
+
+        List<SysMenu> ms = menumapper.selectByExample(null);
+        List<String> ns = new ArrayList<String>();
+        for ( SysMenu m : ms ){
+            if ( m.getUrl() != null && m.getUrl().equals(url)){
+                ns.add( m.getName());
+                menuName(ns , m , ms);
+                break;
+            }
+        }
+        if ( ns != null && ns.size() > 0 ){
+            StringBuffer sb = new StringBuffer();
+            for ( String n : ns ){
+                sb.append("<li class=\"active\">");
+                sb.append(n);
+                sb.append("</li>");
+            }
+            return sb.toString();
+        }
+        return null;
+    }
+
+    /**
+     * 递归拼接名字
+     * @param ns
+     * @param m
+     * @param ms
+     */
+    private void menuName ( List<String> ns , SysMenu m, List<SysMenu> ms){
+        if (m.getParentId().equals("0"))
+            return ;
+        for ( SysMenu mm : ms ){
+            if ( mm.getId().equals(m.getParentId())){
+                ns.add( 0 , mm.getName());
+                menuName(ns , mm , ms);
+                break;
+            }
+        }
+    }
 
 }

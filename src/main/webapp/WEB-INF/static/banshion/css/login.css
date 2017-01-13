@@ -4,8 +4,6 @@
 .login_area { 
 	float:left;
 	position:absolute;
-	background-image: url(../images/loginNbg.png);
-	background-repeat: no-repeat;
 	left:50%;
 	top:45%;
 	margin:-152px 0 0 -293px;

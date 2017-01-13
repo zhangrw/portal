@@ -84,7 +84,10 @@
             <include refid="Example_Where_Clause" />
         </if>
         <if test="orderByClause != null" >
-            order by ${orderByClause}
+            order by ${orderByClause},menu_order
+        </if>
+        <if test=" orderByClause == null ">
+            order by menu_order
         </if>
     </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >

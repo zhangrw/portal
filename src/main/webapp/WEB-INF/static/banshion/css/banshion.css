@@ -626,15 +626,15 @@ div.sinfobox-switch{
 
 
 
-[class^="iconBtn-"]{
-	background-image:url(../images/icon/iconbtn.png);
-	background-repeat:no-repeat;
-	background-color:transparent;
-    display: inline-block;
-    height: 12px;
-    vertical-align: text-top;
-    width: 12px;
-}
+/*[class^="iconBtn-"]{*/
+	/*background-image:url(../images/icon/iconbtn.png);*/
+	/*background-repeat:no-repeat;*/
+	/*background-color:transparent;*/
+    /*display: inline-block;*/
+    /*height: 12px;*/
+    /*vertical-align: text-top;*/
+    /*width: 12px;*/
+/*}*/
 .iconBtn-dep{
 	background-position:0px 0px;
 }

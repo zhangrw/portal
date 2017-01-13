@@ -268,7 +268,8 @@ ul, li, ol, fieldset , figure{
 	_height:40px;
 	background: #00036a;
 	box-shadow: 2px 2px 2px #909090;
-	position: fixed;_position: absolute;left: 0; top: 0;z-index: 999;_top: expression(this.scrollTop=document.documentElement.scrollTop);/*固定在顶部*/
+	position: fixed;_position: absolute;left: 0; top: 0;z-index: 999;
+	/*_top: expression(this.scrollTop=document.documentElement.scrollTop);!*固定在顶部*!*/
 }
 #header{
 	width: 100%;
@@ -308,7 +309,7 @@ nav  ul  li > a{
 	height: 26px;
 	color: #FFF;
 	display: block;
-	padding: 10px 15px 0 15px;
+	padding: 10px 15px 0px 15px;
 }
 nav ul.left-posbox a:hover{
 	height: 26px;
@@ -806,6 +807,26 @@ a.dropdown-toggle:focus{color: #32c0ef;text-decoration: none;}
 }
 .inputchat .black:hover{
 	background: rgba(91, 91, 91, 0.7);	
+}
+
+
+.breadcrumb {
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: none;
+	background-color: #0080C0;
+	border-radius: 4px;
+}
+.breadcrumb > li {
+	display: inline-block;
+}
+.breadcrumb > li + li:before {
+	padding: 0 5px;
+	color: #f9fdff;
+	content: "/\00a0";
+}
+.breadcrumb > .active {
+	color: #f9fdff;
 }
 
 

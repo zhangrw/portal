@@ -4,7 +4,6 @@ import com.banshion.portal.util.Securitys;
 import com.banshion.portal.web.sys.domain.SysMenu;
 import com.banshion.portal.web.sys.domain.SysPermission;
 import com.banshion.portal.web.sys.service.MenuService;
-import com.banshion.portal.web.sys.service.impl.MenuTreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -135,11 +134,27 @@ public class MenuController {
 
     @RequestMapping(value = "menuTree", method = RequestMethod.GET)
     @ResponseBody
-    public List<MenuTreeNode> menuTree() {
+    public List<SysMenu> menuTree() {
 
         if(Securitys.isAdmin()){
             return menuDao.getAllMenus();
         }
         return menuDao.getMenuByUserId(Securitys.getUserId());
     }
+
+    @RequestMapping("menuFullName")
+    @ResponseBody
+    public ResponseEntity<?> menuFullName(String url){
+        Map<String, Object> result = new HashMap<String, Object>();
+        try{
+            String ret = menuDao.menuFullName(url);
+            result.put("content", ret);
+            result.put("success", true);
+        }catch(Exception e){
+            e.printStackTrace();
+            result.put("success", false);
+        }
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
+
 }
