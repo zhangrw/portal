@@ -35,6 +35,23 @@
 				/service/**=anon
 				/** = authc
 			</value>
+			<!--
+			anon:例子/admins/**=anon 没有参数，表示可以匿名使用
+			authc:例如/admins/user/**=authc表示需要认证(登录)才能使用，没有参数
+			authcBasic：例如/admins/user/**=authcBasic没有参数表示httpBasic认证
+			logout：注销登录的时候，完成一定的功能，任何现有的Session 都将会失效，
+					而且任何身份都将会失去关联（例如，在Web 应用程序中，RememberMe cookie 也将被删除）
+			noSessionCreation：阻止在请求期间创建新的会话来保证无状态的体验
+			perms：例子/admins/user/**=perms[user:add:*],参数可以写多个，多个时必须加上引号，
+				   并且参数之间用逗号分割，例如/admins/user/**=perms[“user:add:*,user:modify:*”]，
+				   当有多个参数时必须每个参数都通过才通过，想当于isPermitedAll()方法。
+			port：例子/admins/user/**=port[8081],指定请求访问的端口
+			rest：例子/admins/user/**=rest[user],根据请求的方法，相当于/admins/user/**=perms[user:method] ,其中method为post，get，delete等。
+			roles：例子/admins/user/**=roles[admin],参数可以写多个，多个时必须加上引号，
+				   并且参数之间用逗号分割，当有多个参数时，例如admins/user/**=roles[“admin,guest”],每个参数通过才算通过，相当于hasAllRoles()方法。
+			ssl:例子/admins/user/**=ssl没有参数，表示安全的url请求，协议为https
+			user:例如/admins/user/**=user没有参数表示必须存在用户，当登入操作时不做检查
+			 -->
 		</property>
 	</bean>
 	<!-- 用户授权信息Cache, 采用EhCache -->

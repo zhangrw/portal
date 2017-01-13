@@ -165,7 +165,7 @@
             beforeDrag: beforeDrag,
             onAsyncSuccess: onAsyncSuccess,
             onRemove: onRemove
-//            ,onClick : editOnClickReadOnly  //单击事件到效果不好 会影响其他按钮操作
+//            ,onClick : editOnClickReadOnly  //单击事件的效果不好 会影响其他按钮操作
         },
         view:{
             addHoverDom: addHoverDom,
@@ -238,7 +238,8 @@
 
         var treeObj = $.fn.zTree.getZTreeObj(treeId);
         var node = treeObj.getNodeByParam("id","0", null); // 展开根节点
-        treeObj.expandNode(node,true,false,true);
+//        treeObj.expandNode(node,true,false,true);
+        treeObj.expandAll(true);
     }
 
     function beforeDrag(treeId, treeNodes) {
