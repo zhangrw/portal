@@ -1,4 +1,4 @@
-package com.banshion.portal.web;
+package com.banshion.portal.test;
 
 import com.banshion.portal.web.sys.dao.SysMenuMapper;
 import org.junit.runner.RunWith;
